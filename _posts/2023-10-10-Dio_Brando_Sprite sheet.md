@@ -2,7 +2,7 @@
 toc: true
 comments: false
 layout: post
-title: Dieo Animation Sprite Sheet
+title: Dio brando Animation Sprite Sheet
 description: This is our dieo sprite sheet animaton.
 type: hack
 courses: { compsci: {week: 3} }
@@ -11,7 +11,7 @@ courses: { compsci: {week: 3} }
 <body>
     <div>
         <canvas id="spriteContainer"> <!-- Within the base div is a canvas. An HTML canvas is used only for graphics. It allows the user to access some basic functions related to the image created on the canvas (including animation) -->
-            <img id="dio brando Sprite" src="{{site.baseurl}}/images/dio_brando_sprite.png">  // change sprite here
+            <img id="dio_brando_Sprite" src="{{site.baseurl}}/images/dio_brando_sprite_sheet_by_jayhyperstarx_df6qild-pre.png">  // change sprite here
         </canvas>
         <div id="controls"> <!--basic radio buttons which can be used to check whether each individual animaiton works -->
             <input type="radio" name="animation" id="idle" checked>
@@ -29,9 +29,9 @@ courses: { compsci: {week: 3} }
     window.addEventListener('load', function () {
         const canvas = document.getElementById('spriteContainer');
         const ctx = canvas.getContext('2d');
-        const SPRITE_WIDTH = 33;  // matches sprite pixel width
-        const SPRITE_HEIGHT = 36; // matches sprite pixel height
-        const FRAME_LIMIT = 14;  // matches number of frames per sprite row, this code assume each row is same
+        const SPRITE_WIDTH = 36;  // matches sprite pixel width
+        const SPRITE_HEIGHT = 37; // matches sprite pixel height
+        const FRAME_LIMIT = 25;  // matches number of frames per sprite row, this code assume each row is same
 
         const SCALE_FACTOR = 2;  // control size of sprite on canvas
         canvas.width = SPRITE_WIDTH * SCALE_FACTOR;
@@ -39,7 +39,7 @@ courses: { compsci: {week: 3} }
 
         class Dog {
             constructor() {
-                this.image = document.getElementById("Dio brando Sprite");
+                this.image = document.getElementById("dio_brando_Sprite");
                 this.x = 0;
                 this.y = 0;
                 this.minFrame = 0;
