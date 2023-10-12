@@ -56,10 +56,12 @@ courses: { compsci: {week: 8} }
 
         // a class to store the differences in the animations to make it clear what the animation changes are for
         class AnimationType{
-            constructor(initFrameX = 0, maxFrame = FRAME_LIMIT, animationDelay = 65){
+            constructor(initFrameX = 0, maxFrame = FRAME_LIMIT, animationDelay = 65, spriteWidth = SPRITE_WIDTH , spriteHeight= SPRITE_HEIGHT){
                 this.maxFrame = maxFrame;
                 this.initFrameX = initFrameX;
                 this.animationDelay = animationDelay;
+                this.spriteWidth = spriteWidth;
+                this.spriteHeight = spriteHeight;
             }
         }
 
@@ -108,7 +110,7 @@ courses: { compsci: {week: 8} }
         // to make it more readible what the changes are doing
         //const jumpRightAnimation = new AnimationType(undefined, 7, undefined); // frames go from 0 to 7 but everything else is the same
         //const jumpLeftAnimation = new AnimationType(8, undefined, undefined); // frames go from 8 to 14 but everything else is the same
-
+        const punchAnimation = new AnimationType(undefined, 12, undefined, 40,80);
         // update frameY of monkey object, action from radio controls
         const controls = document.getElementById('controls');
         controls.addEventListener('click', function (event) {
@@ -120,8 +122,8 @@ courses: { compsci: {week: 8} }
                         jonathan.animationType = new AnimationType();
                         break;
                     case 'walkLeft':
-                        //monkey.frameY = 1;
-                        //monkey.animationType = new AnimationType();
+                        jonathan.frameY = 1;
+                        jonathan.animationType = punchAnimation;
                         break;
                     case 'jumpRight':
                         //monkey.frameY = 2;
