@@ -20,7 +20,7 @@ courses: { compsci: {week: 8} }
     </div>
     <div>
         <canvas id="spriteContainer"> <!-- Within the base div is a canvas. An HTML canvas is used only for graphics. It allows the user to access some basic functions related to the image created on the canvas (including animation) -->
-            <img id="Jonathan Joes Sprite" src="{{site.baseurl}}/images/Jonathan Joes sprite sheet png"> // change sprite here
+            <img id="Jonathan Joes Sprite" src="{{site.baseurl}}/images/Jonathan_Joes_sprite_sheet.png"> // change sprite here
         </canvas>
 
     </div>
@@ -32,7 +32,8 @@ courses: { compsci: {week: 8} }
     /* Toggle "canvas filter propery" 
     * look in _sass/minima/dark-mode.scss
     */
-    var isFilterEnabled = true;
+   canvas.style.filter = "none";
+    /*var isFilterEnabled = true;
     const defaultFilter = getComputedStyle(document.documentElement).getPropertyValue('--default-canvas-filter');
     toggleCanvasEffect.addEventListener("click", function () {
         if (isFilterEnabled) {
@@ -42,20 +43,20 @@ courses: { compsci: {week: 8} }
         }
 
         isFilterEnabled = !isFilterEnabled;  // switch boolean value
-    });
+    });*/
     // start on page load
     window.addEventListener('load', function () {
-        const SPRITE_WIDTH = 50;  // matches sprite pixel width
-        const SPRITE_HEIGHT = 65; // matches sprite pixel height
+        const SPRITE_WIDTH = 55;  // matches sprite pixel width
+        const SPRITE_HEIGHT = 75; // matches sprite pixel height
         const FRAME_LIMIT = 5;  // matches number of frames per sprite row, this code assume each row is same
 
-        const SCALE_FACTOR = 1;  // control size of sprite on canvas
+        const SCALE_FACTOR = 2;  // control size of sprite on canvas
         canvas.width = SPRITE_WIDTH * SCALE_FACTOR;
         canvas.height = SPRITE_HEIGHT * SCALE_FACTOR;
 
         // a class to store the differences in the animations to make it clear what the animation changes are for
         class AnimationType{
-            constructor(initFrameX = 0, maxFrame = FRAME_LIMIT, animationDelay = 75){
+            constructor(initFrameX = 0, maxFrame = FRAME_LIMIT, animationDelay = 65){
                 this.maxFrame = maxFrame;
                 this.initFrameX = initFrameX;
                 this.animationDelay = animationDelay;
@@ -142,15 +143,15 @@ courses: { compsci: {week: 8} }
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
             // Draws the current frame of the sprite.
-            monkey.draw(ctx);
+            jonathan.draw(ctx);
 
             // Updates the `frameX` property to prepare for the next frame in the sprite sheet.
-            monkey.update();
+            jonathan.update();
 
             // Uses `requestAnimationFrame` to synchronize the animation loop with the display's refresh rate,
             // ensuring smooth visuals.
             requestAnimationFrame(function() {
-                setTimeout(animate, monkey.animationType.animationDelay); // Adjust the delay (in milliseconds) to control the frame rate.
+                setTimeout(animate, jonathan.animationType.animationDelay); // Adjust the delay (in milliseconds) to control the frame rate.
             });
         }
 
