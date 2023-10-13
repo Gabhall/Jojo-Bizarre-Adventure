@@ -80,10 +80,10 @@ courses: { compsci: {week: 8} }
             draw(context) {
                 context.drawImage(
                     this.image,
-                    this.frameX * SPRITE_WIDTH,
-                    this.frameY * SPRITE_HEIGHT,
-                    SPRITE_WIDTH,
-                    SPRITE_HEIGHT,
+                    this.frameX * this.animationType.spriteWidth,
+                    this.frameY * this.animationType.spriteHeight,
+                    this.animationType.spriteWidth,
+                    this.animationType.spriteHeight,
                     this.x,
                     this.y,
                     canvas.width,
@@ -110,7 +110,7 @@ courses: { compsci: {week: 8} }
         // to make it more readible what the changes are doing
         //const jumpRightAnimation = new AnimationType(undefined, 7, undefined); // frames go from 0 to 7 but everything else is the same
         //const jumpLeftAnimation = new AnimationType(8, undefined, undefined); // frames go from 8 to 14 but everything else is the same
-        const punchAnimation = new AnimationType(undefined, 12, undefined, 40,80);
+        const punchAnimation = new AnimationType(undefined, 12, undefined, 60,80);
         // update frameY of monkey object, action from radio controls
         const controls = document.getElementById('controls');
         controls.addEventListener('click', function (event) {
