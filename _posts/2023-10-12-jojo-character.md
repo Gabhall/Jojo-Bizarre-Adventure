@@ -12,7 +12,7 @@ courses: { compsci: {week: 8} }
         <input type="radio" name="animation" id="walkRight" checked>
         <label for="walkRight">Walk Right</label>
         <input type="radio" name="animation" id="walkLeft">
-        <label for="walkLeft">Walk Left</label>
+        <label for="walkLeft">Punch</label>
         <input type="radio" name="animation" id="jumpRight">
         <label for="jumpRight">Jump Right</label>
         <input type="radio" name="animation" id="jumpLeft">
@@ -111,6 +111,9 @@ courses: { compsci: {week: 8} }
         //const jumpRightAnimation = new AnimationType(undefined, 7, undefined); // frames go from 0 to 7 but everything else is the same
         //const jumpLeftAnimation = new AnimationType(8, undefined, undefined); // frames go from 8 to 14 but everything else is the same
         const punchAnimation = new AnimationType(undefined, 12, undefined, 60,80);
+
+        const swordAnimation = new AnimationType(undefined,11,
+        undefined,50,100);
         // update frameY of monkey object, action from radio controls
         const controls = document.getElementById('controls');
         controls.addEventListener('click', function (event) {
@@ -126,8 +129,8 @@ courses: { compsci: {week: 8} }
                         jonathan.animationType = punchAnimation;
                         break;
                     case 'jumpRight':
-                        //monkey.frameY = 2;
-                        //monkey.animationType = jumpRightAnimation;
+                        jonathan.frameY = 2;
+                        jonathan.animationType = swordAnimation;
                         break;
                     case 'jumpLeft':
                         // this animation is on the same line as jumpRight
