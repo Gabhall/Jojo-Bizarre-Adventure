@@ -56,7 +56,7 @@ courses: { compsci: {week: 8} }
 
         // a class to store the differences in the animations to make it clear what the animation changes are for
         class AnimationType{
-            constructor(initFrameX = 0, maxFrame = FRAME_LIMIT, animationDelay = 65, spriteWidth = SPRITE_WIDTH , spriteHeight= SPRITE_HEIGHT){
+            constructor(initFrameX = 0, maxFrame = FRAME_LIMIT, animationDelay = 58, spriteWidth = SPRITE_WIDTH , spriteHeight= SPRITE_HEIGHT){
                 this.maxFrame = maxFrame;
                 this.initFrameX = initFrameX;
                 this.animationDelay = animationDelay;
