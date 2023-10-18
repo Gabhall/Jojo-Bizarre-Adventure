@@ -3,7 +3,7 @@ layout: base
 title: Jonathan Animation
 description: this is our jonathan anitmation sprite character.
 type: tangibles
-courses: { compsci: {week: 8} }
+courses: { compsci: {week: 6} }
 ---
 
 <body>
@@ -14,7 +14,7 @@ courses: { compsci: {week: 8} }
         <input type="radio" name="animation" id="walkLeft">
         <label for="walkLeft">Punch</label>
         <input type="radio" name="animation" id="jumpRight">
-        <label for="jumpRight">Jump Right</label>
+        <label for="jumpRight">Sword Fight</label>
         <input type="radio" name="animation" id="jumpLeft">
         <label for="jumpLeft">Jump Left</label>
     </div>
@@ -56,7 +56,7 @@ courses: { compsci: {week: 8} }
 
         // a class to store the differences in the animations to make it clear what the animation changes are for
         class AnimationType{
-            constructor(initFrameX = 0, maxFrame = FRAME_LIMIT, animationDelay = 58, spriteWidth = SPRITE_WIDTH , spriteHeight= SPRITE_HEIGHT){
+            constructor(initFrameX = 0, maxFrame = FRAME_LIMIT, animationDelay = 68, spriteWidth = SPRITE_WIDTH , spriteHeight= SPRITE_HEIGHT){
                 this.maxFrame = maxFrame;
                 this.initFrameX = initFrameX;
                 this.animationDelay = animationDelay;
@@ -113,7 +113,9 @@ courses: { compsci: {week: 8} }
         const punchAnimation = new AnimationType(undefined, 12, undefined, 60,80);
 
         const swordAnimation = new AnimationType(undefined,11,
-        undefined,50,100);
+        undefined,60,95);
+
+        const firePunchAnimation = new AnimationType(undefined, 8, undefined, 50,64);
         // update frameY of monkey object, action from radio controls
         const controls = document.getElementById('controls');
         controls.addEventListener('click', function (event) {
@@ -133,9 +135,8 @@ courses: { compsci: {week: 8} }
                         jonathan.animationType = swordAnimation;
                         break;
                     case 'jumpLeft':
-                        // this animation is on the same line as jumpRight
-                        //monkey.frameY = 2;
-                        //monkey.animationType = jumpLeftAnimation;
+                        jonathan.frameY = 3;
+                        jonathan.animationType = firePunchAnimation;
                     default:
                         break;
                 }

@@ -1,0 +1,94 @@
+---
+layout: base
+title: jojo game
+jojoSprite: /images/Jonathan_Joes_sprite_sheet.png
+---
+
+<!-- Liquid code, run by Jekyll, used to define location of asset(s) -->
+{% assign jojoSpriteImage = site.baseurl | append: page.jojoSprite %}
+
+
+<style>
+    #controls {
+        position: relative;
+        z-index: 2; /* Ensure the controls are on top */
+    }
+</style>
+
+<!-- Prepare DOM elements -->
+<!-- Wrap both the dog canvas and controls in a container div -->
+<div id="canvasContainer">
+    <div id="controls"> <!-- Controls -->
+        <!-- Background controls -->
+        <button id="toggleCanvasEffect">Invert</button>
+        <!-- Dog controls -->
+        <input type="radio" name="animation" id="idle">
+        <label for="idle">Idle</label>
+        <input type="radio" name="animation" id="barking">
+        <label for="barking">Barking</label>
+        <input type="radio" name="animation" id="walking" checked>
+        <label for="walking">Walking</label>
+    </div>
+</div>
+
+<script type="module">
+    import GameEnv from '{{site.baseurl}}/assets/js/alienWorld/GameEnv.js';
+    import { initJojo } from '{{site.baseurl}}/assets/js/CharacterJojo.js';
+
+    // Prepare Dog Image
+    const jojoImg = new Image();
+    jojoImg.src = '{{jojoSpriteImage}}';
+
+    // Prepare HTML with Dog Canvas
+    const jojoCanvas = document.createElement("canvas");
+    jojoCanvas.id = "characters";
+    document.body.appendChild(jojoCanvas);
+
+    // Setup Globals
+    GameEnv.gameSpeed = 2;
+    GameEnv.controls = document.getElementById("controls");
+
+    backgroundImg.onload = function () {
+
+        // Character object(s)
+        const dogSpeedRatio = 0.2
+        var dogObj = initDog(dogCanvas, dogImg, dogSpeedRatio);
+        const monkeySpeedRatio = 0.7
+        var monkeyObj = initMonkey(monkeyCanvas, monkeyImg, monkeySpeedRatio);
+
+        // Game loop
+        function gameLoop() {
+            backgroundObj.update();
+            backgroundObj.draw();
+
+            dogObj.update();
+            dogObj.draw();
+
+            monkeyObj.update();
+            monkeyObj.draw();
+
+            requestAnimationFrame(gameLoop);  // cycle game, aka recursion
+        }
+
+        // Start game
+        gameLoop();
+    }
+
+    /* Toggle "canvas filter property" */
+    var isFilterEnabled = true;
+    const defaultFilter = getComputedStyle(document.documentElement).getPropertyValue('--default-canvas-filter');
+
+    toggleCanvasEffect.addEventListener("click", function () {
+        if (isFilterEnabled) {
+            backgroundCanvas.style.filter = "none";  // remove filter
+            dogCanvas.style.filter = "none";
+            monkeyCanvas.style.filter = "none";
+        } else {
+            backgroundCanvas.style.filter = defaultFilter; // Apply the default filter value
+            dogCanvas.style.filter = defaultFilter;
+            monkeyCanvas.style.filter = defaultFilter;
+        }
+        isFilterEnabled = !isFilterEnabled;  // switch boolean value
+    });
+</script>
+
