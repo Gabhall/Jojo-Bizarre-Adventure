@@ -56,9 +56,10 @@ courses: { compsci: {week: 6} }
 
         // a class to store the differences in the animations to make it clear what the animation changes are for
         class AnimationType{
-            constructor(initFrameX = 0, maxFrame = FRAME_LIMIT, animationDelay = 68, spriteWidth = SPRITE_WIDTH , spriteHeight= SPRITE_HEIGHT){
+            constructor(initFrameX = 0, frameY = 0, maxFrame = FRAME_LIMIT, animationDelay = 68, spriteWidth = SPRITE_WIDTH , spriteHeight= SPRITE_HEIGHT){
                 this.maxFrame = maxFrame;
                 this.initFrameX = initFrameX;
+                this.frameY = frameY;
                 this.animationDelay = animationDelay;
                 this.spriteWidth = spriteWidth;
                 this.spriteHeight = spriteHeight;
@@ -81,7 +82,7 @@ courses: { compsci: {week: 6} }
                 context.drawImage(
                     this.image,
                     this.frameX * this.animationType.spriteWidth,
-                    this.frameY * this.animationType.spriteHeight,
+                    this.animationType.frameY,
                     this.animationType.spriteWidth,
                     this.animationType.spriteHeight,
                     this.x,
@@ -110,12 +111,12 @@ courses: { compsci: {week: 6} }
         // to make it more readible what the changes are doing
         //const jumpRightAnimation = new AnimationType(undefined, 7, undefined); // frames go from 0 to 7 but everything else is the same
         //const jumpLeftAnimation = new AnimationType(8, undefined, undefined); // frames go from 8 to 14 but everything else is the same
-        const punchAnimation = new AnimationType(undefined, 12, undefined, 60,80);
+        const punchAnimation = new AnimationType(undefined, 110,12, undefined, 60,65);
 
-        const swordAnimation = new AnimationType(undefined,11,
-        undefined,60,95);
+        const swordAnimation = new AnimationType(undefined,170,11,
+        undefined,65,95);
 
-        const firePunchAnimation = new AnimationType(undefined, 8, undefined, 50,64);
+        const firePunchAnimation = new AnimationType(undefined, 285,8, undefined, 64,64);
         // update frameY of monkey object, action from radio controls
         const controls = document.getElementById('controls');
         controls.addEventListener('click', function (event) {
@@ -142,7 +143,7 @@ courses: { compsci: {week: 6} }
                 }
             }
         });
-
+             
         // Animation recursive control function
         function animate() {
             // Clears the canvas to remove the previous frame.
