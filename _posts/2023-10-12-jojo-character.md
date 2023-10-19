@@ -56,13 +56,14 @@ courses: { compsci: {week: 6} }
 
         // a class to store the differences in the animations to make it clear what the animation changes are for
         class AnimationType{
-            constructor(initFrameX = 0, frameY = 0, maxFrame = FRAME_LIMIT, animationDelay = 68, spriteWidth = SPRITE_WIDTH , spriteHeight= SPRITE_HEIGHT){
+            constructor(initFrameX = 0, frameY = 0, maxFrame = FRAME_LIMIT, animationDelay = 68, spriteWidth = SPRITE_WIDTH , spriteHeight= SPRITE_HEIGHT, overrides = []){
                 this.maxFrame = maxFrame;
                 this.initFrameX = initFrameX;
                 this.frameY = frameY;
                 this.animationDelay = animationDelay;
                 this.spriteWidth = spriteWidth;
                 this.spriteHeight = spriteHeight;
+                this.overrides = overrides;
             }
         }
 
@@ -79,11 +80,18 @@ courses: { compsci: {week: 6} }
 
             // draw Monkey object
             draw(context) {
+                let spriteWidth = this.animationType.spriteWidth;
+                for (let override of this.animationType.overrides) {
+                    if (override.x === this.frameX) {
+                        spriteWidth = override.width;
+                    }
+                }
+
                 context.drawImage(
                     this.image,
                     this.frameX * this.animationType.spriteWidth,
                     this.animationType.frameY,
-                    this.animationType.spriteWidth,
+                    spriteWidth,
                     this.animationType.spriteHeight,
                     this.x,
                     this.y,
@@ -116,7 +124,7 @@ courses: { compsci: {week: 6} }
         const swordAnimation = new AnimationType(undefined,170,11,
         undefined,65,95);
 
-        const firePunchAnimation = new AnimationType(undefined, 285,8, undefined, 64,64);
+        const firePunchAnimation = new AnimationType(undefined, 285,8, undefined, 64,64, [{x:4,width:80},{x:5,width:80}]);
         // update frameY of monkey object, action from radio controls
         const controls = document.getElementById('controls');
         controls.addEventListener('click', function (event) {
