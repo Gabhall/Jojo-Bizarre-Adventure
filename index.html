@@ -72,12 +72,12 @@ jojoSprite: /images/Jonathan_Joes_sprite_sheet.png
     toggleCanvasEffect.addEventListener("click", function () {
         if (isFilterEnabled) {
             backgroundCanvas.style.filter = "none";  // remove filter
-            dogCanvas.style.filter = "none";
-            monkeyCanvas.style.filter = "none";
+            jojoCanvas.style.filter = "none";
+            
         } else {
             backgroundCanvas.style.filter = defaultFilter; // Apply the default filter value
-            dogCanvas.style.filter = defaultFilter;
-            monkeyCanvas.style.filter = defaultFilter;
+            jojoCanvas.style.filter = defaultFilter;
+           
         }
         isFilterEnabled = !isFilterEnabled;  // switch boolean value
     });
