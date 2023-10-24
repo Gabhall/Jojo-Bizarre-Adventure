@@ -6,6 +6,7 @@ jojoSprite: /images/Jonathan_Joes_sprite_sheet.png
 ---
 
 <!-- Liquid code, run by Jekyll, used to define location of asset(s) -->
+{% assign backgroundImage = site.baseurl | append: page.image %}
 {% assign jojoSpriteImage = site.baseurl | append: page.jojoSprite %}
 
 
@@ -36,11 +37,17 @@ jojoSprite: /images/Jonathan_Joes_sprite_sheet.png
     import GameEnv from '{{site.baseurl}}/assets/js/GameEnv.js';
     import { initJojo } from '{{site.baseurl}}/assets/js/CharacterJojo.js';
     
+    const backgroundImg=new Image();
+    backgroundImg.src='{{backgroundImg}}';
     // Prepare Dog Image
     const jojoImg = new Image();
     jojoImg.src = '{{jojoSpriteImage}}';
 
     // Prepare HTML with Dog Canvas
+    const backgroundCanvas = document.createElement("canvas");
+    backgroundCanvas.id = "background";
+    document.body.appendChild(backgroundCanvas);
+
     const jojoCanvas = document.createElement("canvas");
     jojoCanvas.id = "characters";
     document.body.appendChild(jojoCanvas);
