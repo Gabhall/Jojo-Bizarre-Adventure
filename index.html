@@ -49,23 +49,14 @@ jojoSprite: /images/Jonathan_Joes_sprite_sheet.png
     GameEnv.controls = document.getElementById("controls");
 
     backgroundImg.onload = function () {
-
-        // Character object(s)
-        const dogSpeedRatio = 0.2
-        var dogObj = initDog(dogCanvas, dogImg, dogSpeedRatio);
-        const monkeySpeedRatio = 0.7
-        var monkeyObj = initMonkey(monkeyCanvas, monkeyImg, monkeySpeedRatio);
-
+        var jojoSpeedRatio = 1;
+        var jojo = initJojo(jojoCanvas, jojoImg, jojoSpeedRatio, GameEnv.controls);
         // Game loop
         function gameLoop() {
             backgroundObj.update();
             backgroundObj.draw();
 
-            dogObj.update();
-            dogObj.draw();
-
-            monkeyObj.update();
-            monkeyObj.draw();
+            
 
             requestAnimationFrame(gameLoop);  // cycle game, aka recursion
         }
