@@ -72,4 +72,4 @@ export function initJojo(canvasId, image, speedRatio, controls){
     return jojo;
 }
 
-export default CharacterDog;
+export default CharacterJojo;
