@@ -36,7 +36,7 @@ jojoSprite: /images/Jonathan_Joes_sprite_sheet.png
 <script type="module">
     import GameEnv from '{{site.baseurl}}/assets/js/GameEnv.js';
     import { initJojo } from '{{site.baseurl}}/assets/js/CharacterJojo.js';
-    
+    import {initBackground} from '{{site.baseurl}}/assets/js/Background.js';
     const backgroundImg=new Image();
     backgroundImg.src='{{backgroundImg}}';
     // Prepare Dog Image
@@ -59,6 +59,7 @@ jojoSprite: /images/Jonathan_Joes_sprite_sheet.png
     backgroundImg.onload = function () {
         var jojoSpeedRatio = 1;
         var jojo = initJojo(jojoCanvas, jojoImg, jojoSpeedRatio, GameEnv.controls);
+        var background=initBackground(backgroundCanvas,backgroundImg,0.2);
         // Game loop
         function gameLoop() {
             backgroundObj.update();
