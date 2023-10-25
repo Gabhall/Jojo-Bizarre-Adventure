@@ -45,7 +45,7 @@ export class CharacterJojo extends Character{
 // In this case the dog is following the default character initialization
 export function initJojo(canvasId, image, speedRatio, controls){
     // Create the Dog character
-    var jojo = new Characterjojo(canvasId, image, speedRatio);
+    var jojo = new CharacterJojo(canvasId, image, speedRatio);
 
     // Dog Frame position and Frame extents
     jojo.setFrameY(JojoAnimation.walking.row);
