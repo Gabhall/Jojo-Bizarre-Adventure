@@ -3,10 +3,10 @@ import Character from './Character.js';
 
 const JojoAnimation = {
     // Sprite properties
-    scale: 0.5,
+    scale: 2,
     width: 55,
     height: 75,
-	idle: { row: 0, frames: 47 },
+	idle: { row: 0, frames: 5 },
 	barking: { row: 1, frames: 47 },
 	walking: { row: 2, frames: 47 }
 }
@@ -21,6 +21,7 @@ export class CharacterJojo extends Character{
             JojoAnimation.height, 
             JojoAnimation.scale
         );
+        this.updateCount=0;
     }
 
     // Dog perform a unique update
@@ -33,10 +34,16 @@ export class CharacterJojo extends Character{
             }
         }
         // Update animation frameX of the object
-        if (this.frameX < this.maxFrame) {
-            this.frameX++;
-        } else {
-            this.frameX = 0;
+        if (this.updateCount!==65){
+            if (this.frameX < this.maxFrame) {
+                this.frameX++;
+            } else {
+                this.frameX = 0;
+            }
+            this.updateCount++;
+        }
+        else if (this.updateCount === 65){
+            this.updateCount = 0;
         }
     }
 }
@@ -48,8 +55,8 @@ export function initJojo(canvasId, image, speedRatio, controls){
     var jojo = new CharacterJojo(canvasId, image, speedRatio);
 
     // Dog Frame position and Frame extents
-    jojo.setFrameY(JojoAnimation.walking.row);
-    jojo.setMaxFrame(JojoAnimation.walking.frames);
+    jojo.setFrameY(JojoAnimation.idle.row);
+    jojo.setMaxFrame(JojoAnimation.idle.frames);
 
     // Dog Screen Position
     jojo.setX(GameEnv.innerWidth);

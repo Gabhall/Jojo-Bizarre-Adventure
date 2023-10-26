@@ -64,7 +64,8 @@ jojoSprite: /images/Jonathan_Joes_sprite_sheet.png
         function gameLoop() {
             backgroundObj.update();
             backgroundObj.draw();
-
+            jojo.update();
+            jojo.draw();
             
 
             requestAnimationFrame(gameLoop);  // cycle game, aka recursion
