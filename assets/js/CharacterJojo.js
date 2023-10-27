@@ -59,8 +59,8 @@ export function initJojo(canvasId, image, speedRatio, controls){
     jojo.setMaxFrame(JojoAnimation.idle.frames);
 
     // Dog Screen Position
-    jojo.setX(GameEnv.innerWidth);
-    jojo.setY(GameEnv.innerHeight / 1.5);
+    jojo.setX(GameEnv.innerWidth/2);
+    jojo.setY(GameEnv.innerHeight /0.8);
 
     /* Dog Control 
     * changes y value, the row in sprite
