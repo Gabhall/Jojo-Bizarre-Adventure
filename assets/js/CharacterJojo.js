@@ -7,8 +7,8 @@ const JojoAnimation = {
     width: 55,
     height: 75,
 	idle: { row: 0, frames: 5 },
-	barking: { row: 1, frames: 47 },
-	walking: { row: 2, frames: 47 }
+	barking: { row: 1, frames: 12 },
+	walking: { row: 1.47, frames: 12 }
 }
 
 export class CharacterJojo extends Character{
@@ -27,11 +27,15 @@ export class CharacterJojo extends Character{
     // Dog perform a unique update
     update() {
         if (this.frameY === JojoAnimation.walking.row) {
-            this.x -= this.speed;  // Move the dog to the left
+            this.x += this.speed;  // Move the dog to the left
             // Check if the dog has moved off the left edge of the canvas
-            if (this.x < -this.canvas.width) {
-                this.x = GameEnv.innerWidth; // Reset the dog's x position to the right edge
+            if (this.x > GameEnv.innerWidth) {
+                this.x = GameEnv.innerWidth/2; // Reset the dog's x position to the right edge
             }
+
+            this.spriteWidth = 60;
+        } else {
+            this.spriteWidth = JojoAnimation.width;
         }
         // Update animation frameX of the object
         if (this.updateCount!==5){
