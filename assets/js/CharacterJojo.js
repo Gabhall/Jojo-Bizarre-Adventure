@@ -34,15 +34,16 @@ export class CharacterJojo extends Character{
             }
         }
         // Update animation frameX of the object
-        if (this.updateCount!==65){
+        if (this.updateCount!==5){
+            
+            this.updateCount++;
+        }
+        else if (this.updateCount === 5){
             if (this.frameX < this.maxFrame) {
                 this.frameX++;
             } else {
                 this.frameX = 0;
             }
-            this.updateCount++;
-        }
-        else if (this.updateCount === 65){
             this.updateCount = 0;
         }
     }
