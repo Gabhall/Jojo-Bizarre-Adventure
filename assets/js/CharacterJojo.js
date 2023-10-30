@@ -8,7 +8,9 @@ const JojoAnimation = {
     height: 75,
 	idle: { row: 0, frames: 5 },
 	barking: { row: 1, frames: 12 },
-	walking: { row: 1.47, frames: 12 }
+	walking: { row: 1.47, frames: 12 },
+    a: { key: 'a', row: 1.47, frames: 12 },
+    d: { key: 'd', row: 1.47, frames: 12 }
 }
 
 export class CharacterJojo extends Character{
@@ -22,11 +24,12 @@ export class CharacterJojo extends Character{
             JojoAnimation.scale
         );
         this.updateCount=0;
+        this.keyPressed = '';
     }
 
     // Dog perform a unique update
     update() {
-        if (this.frameY === JojoAnimation.walking.row) {
+        /*if (this.frameY === JojoAnimation.walking.row) {
             this.x += this.speed;  // Move the dog to the left
             // Check if the dog has moved off the left edge of the canvas
             if (this.x > GameEnv.innerWidth) {
@@ -34,7 +37,16 @@ export class CharacterJojo extends Character{
             }
 
             this.spriteWidth = 60;
-        } else {
+        } */
+        if (this.keyPressed === 'a'){
+            this.x -= this.speed;
+            this.spriteWidth = 60;
+        }
+        else if (this.keyPressed === 'd'){
+            this.x += this.speed;
+            this.spriteWidth = 60;
+        }
+        else {
             this.spriteWidth = JojoAnimation.width;
         }
         // Update animation frameX of the object
@@ -80,6 +92,19 @@ export function initJojo(canvasId, image, speedRatio, controls){
         }
     });
 
+    document.addEventListener('keydown', function(event){
+        const key = event.key;
+        jojo.setFrameY(JojoAnimation[key].row);
+        jojo.setMaxFrame(JojoAnimation[key].frames);
+        jojo.keyPressed = JojoAnimation[key].key;
+    });
+
+    document.addEventListener('keyup', function(event){
+        const key = event.key;
+        jojo.setFrameY(JojoAnimation[idle].row);
+        jojo.setMaxFrame(JojoAnimation[idle].frames);
+        jojo.keyPressed = '';
+    });
     // Dog Object
     return jojo;
 }
