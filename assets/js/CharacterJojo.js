@@ -101,8 +101,8 @@ export function initJojo(canvasId, image, speedRatio, controls){
 
     document.addEventListener('keyup', function(event){
         const key = event.key;
-        jojo.setFrameY(JojoAnimation[idle].row);
-        jojo.setMaxFrame(JojoAnimation[idle].frames);
+        jojo.setFrameY(JojoAnimation['idle'].row);
+        jojo.setMaxFrame(JojoAnimation['idle'].frames);
         jojo.keyPressed = '';
     });
     // Dog Object
